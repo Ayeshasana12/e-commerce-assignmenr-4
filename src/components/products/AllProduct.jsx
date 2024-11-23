@@ -35,11 +35,12 @@ function AllProduct() {
   const [categoryFilter, setCategoryFilter] = useState({});
   const [allProducts, setAllProducts] = useState([]);
 
-  const { isToast } = useSelector((state) => state.products);
-
+  const { isToast, isProductAdded } = useSelector((state) => state.products);
   const dispatch = useDispatch();
+  console.log(isProductAdded, "isProductAdded");
+  
 
-  console.log(isToast, "toast");
+
 
   const cartHandler = (product) => {
     const isExist = cartList.find((cart) => cart.id === product.id);
@@ -110,7 +111,7 @@ function AllProduct() {
 
     setProducts(filteredProducts)
 
-    console.log(filteredProducts, 'filteredProducts');
+
 
 
   }, [categoryFilter]);
@@ -120,7 +121,10 @@ function AllProduct() {
     if(isToast){
       toast("Product Already Added!")
     }
-   }, [isToast]);
+    if(isProductAdded){
+      toast("Product Added successfully!")
+    }
+   }, [isToast, isProductAdded]);
 
   return (
     <>

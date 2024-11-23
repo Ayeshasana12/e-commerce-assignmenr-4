@@ -61,10 +61,9 @@ export default function HeaderSection() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const [cartItems, setCartItems] = React.useState([]);
-  const count = useSelector((state)=> state.counter);
+  const {items} = useSelector((state)=> state.products);
+  
 
-
-  console.log(count, 'count');
 
   const [open, setOpen] = React.useState(false);
 
@@ -134,11 +133,12 @@ export default function HeaderSection() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={count?.value} color="error">
+      {/* It’s just like this.Bass */}
+        {/* <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+          <Badge badgeContent={items?.length} color="error">
             <ShoppingCartIcon onClick={toggleDrawer(true)} />
           </Badge>
-        </IconButton>
+        </IconButton> */}
         <p>Messages</p>
       </MenuItem>
       <MenuItem>
@@ -201,7 +201,7 @@ export default function HeaderSection() {
               aria-label="show 4 new mails"
               color="inherit"
             >
-              <Badge badgeContent={count?.value} color="error">
+              <Badge badgeContent={items?.length} color="error">
                 <ShoppingCartIcon onClick={toggleDrawer(true)} />
               </Badge>
             </IconButton>
