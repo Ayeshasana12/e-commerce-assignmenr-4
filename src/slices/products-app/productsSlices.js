@@ -24,7 +24,6 @@ const productSlices = createSlice({
       if(product){
         product.quantity += 1;
       }
-      console.log(product ,'productmatch');
     },
     decreaseQuantity: (state, action)=>{
       const product = state.items.find(item => item.id === action.payload.id);
